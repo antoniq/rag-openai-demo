@@ -1,0 +1,28 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: rag-openai-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+  ai:
+    azure:
+      openai:
+        # The Key from Azure AI OpenAI Keys and Endpoint section under Resource Management
+        api-key:
+        # The Key from Azure AI OpenAI Keys and Endpoint section under Resource Management
+        endpoint:
+        embedding:
+          options:
+            deployment-name: text-embedding-ada-002
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        #TODO check if AZure has embedings normalised - I think yes!
+        #But if vectors are normalized to length 1, you can use EUCLIDEAN_DISTANCE or NEGATIVE_INNER_PRODUCT for best performance.
+        distance-type: COSINE_DISTANCE # Search distance type. Defaults to COSINE_DISTANCE
+        dimensions: 1536
+        initialize-schema: true
+        schema-validation: true # This ensures the correctness of the names and reduces the risk of SQL injection attacks.
