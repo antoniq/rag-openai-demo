@@ -9,23 +9,10 @@ import org.springframework.stereotype.Service
 class VectorStoreService(
     private val vectorStore: VectorStore
 ) {
-    fun searchVectorStore(prompt: String): Document {
-        // save
-        vectorStore.add(recipeDocuments)
-        //search
-        val result = vectorStore.similaritySearch(
-            SearchRequest
-                .query(prompt)
-                .withTopK(5)
-        )
-        return filterSearchResult(result)
-    }
-
-    private fun filterSearchResult(documents: List<Document>) =
-        if (documents.isNotEmpty()) {
-            documents.first()
-        } else Document("Sorry, no good match found with your prompt. Please try again.")
-
+    /**
+     * Creates embeddings and saves them into the vector store
+     */
+    fun saveDocuments() = vectorStore.add(recipeDocuments)
 
     companion object {
         //TODO Create test data here
