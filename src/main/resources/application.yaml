@@ -16,12 +16,15 @@ spring:
         endpoint:
         embedding:
           options:
-            deployment-name: text-embedding-ada-002
+            deployment-name: text-embedding-ada-002 # Azure deployment (not model) name
+        chat:
+          options:
+            deployment-name: gpt-4o-mini # Azure deployment (not model) name
     vectorstore:
       pgvector:
         index-type: HNSW
         #TODO check if AZure has embedings normalised - I think yes!
-        #But if vectors are normalized to length 1, you can use EUCLIDEAN_DISTANCE or NEGATIVE_INNER_PRODUCT for best performance.
+        # But if vectors are normalized to length 1, you can use EUCLIDEAN_DISTANCE or NEGATIVE_INNER_PRODUCT for best performance.
         distance-type: COSINE_DISTANCE # Search distance type. Defaults to COSINE_DISTANCE
         dimensions: 1536
         initialize-schema: true
