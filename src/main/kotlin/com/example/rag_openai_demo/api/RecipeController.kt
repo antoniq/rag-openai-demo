@@ -3,8 +3,7 @@ package com.example.rag_openai_demo.api
 import com.example.rag_openai_demo.service.VectorStoreService
 import org.springframework.ai.azure.openai.AzureOpenAiChatModel
 import org.springframework.ai.chat.client.ChatClient
-import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor
-import org.springframework.ai.vectorstore.SearchRequest
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor
 import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -27,11 +26,11 @@ class RecipeController(
         // 2. Configure the chat client to search into the Vector Store
         val chatClientCustom = ChatClient.builder(chatModel)
             .defaultAdvisors(
-                QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults())
+                QuestionAnswerAdvisor(vectorStore)
             ).build()
 
         // 3. Execute the Query against the LLM
-        val response: String = chatClientCustom.prompt()
+        val response = chatClientCustom.prompt()
             .user(promptInput)
             .call()
             .content()
