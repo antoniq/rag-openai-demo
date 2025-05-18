@@ -16,7 +16,7 @@ spring:
         endpoint:
         embedding:
           options:
-            deployment-name: text-embedding-ada-002 # Azure deployment (not model) name
+            deployment-name: text-embedding-3-small # Azure deployment (not model) name
         chat:
           options:
             deployment-name: gpt-4o-mini # Azure deployment (not model) name
