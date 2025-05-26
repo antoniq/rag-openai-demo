@@ -1,6 +1,6 @@
 # RAG-OPENAI-DEMO Project
 
-This is a demo project to blog post: TODO Link.
+This is a demo project to blog post https://www.antoniyaattech.com/posts/blog-rag-openai-spring-ai/
 
 ## Import the project into your IDE of choice
 
